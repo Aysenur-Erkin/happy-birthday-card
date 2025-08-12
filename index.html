@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Happy Birthday 🎉</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff7fc;--ink:#2b2830;--accent:#ff77b7;--accent2:#8fd3ff;--purple:#a78bfa;--card:#ffffff;--shadow:0 10px 30px rgba(255,119,183,.20)}
+*{box-sizing:border-box}html,body{height:100%;margin:0}
+body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background:
+  radial-gradient(circle at 20% 30%, rgba(255,119,183,.08) 0 20%, transparent 22%),
+  radial-gradient(circle at 80% 70%, rgba(167,139,250,.09) 0 18%, transparent 20%);filter: blur(.2px);z-index:0}
+.wrap{min-height:100%;display:grid;place-items:center;padding:18px;position:relative;z-index:1}
+.layout{display:grid;grid-template-columns: 1fr min(760px,92vw) 1fr;gap:18px;align-items:start;width:100%;max-width:1200px}
+.content{position:relative;z-index:3;text-align:center}
+h1.title{font-family:'Pacifico',cursive;font-size:clamp(34px,6vw,56px);margin:6px 0 4px;line-height:1.05;background:linear-gradient(90deg,#ff5fa2,#ff89c6,#ffb3d7);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 2px 0 rgba(255,255,255,.6)}
+.btn{appearance:none;border:0;border-radius:18px;padding:12px 18px;font-weight:700;cursor:pointer;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:var(--shadow);transition:transform .12s ease, box-shadow .12s ease}
+.btn:hover{transform:translateY(-1px);box-shadow:0 14px 36px rgba(255,119,183,.28)}
+.card{margin:16px auto;width:min(760px,92vw);height:300px;perspective:1100px}
+.card-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.2,.7,.2,1);cursor:pointer}
+.card.flipped .card-inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;background:var(--card);border-radius:22px;box-shadow:var(--shadow);display:grid;place-items:center;padding:22px;border:2px dashed rgba(255,119,183,.25)}
+.front{backface-visibility:hidden;display:grid;place-items:center}
+.back{transform:rotateY(180deg);backface-visibility:hidden}
+.msg{font-size:clamp(14px,2.4vw,18px);line-height:1.9;margin:0 14px}
+.msg.pretty{font-family:'Caveat', cursive; font-size:clamp(20px,3.2vw,28px)}
+.cake-wrap{margin:22px auto 6px}
+.cake{position:relative;margin:0 auto;width:min(560px,92vw);height:290px}
+.plate{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:86%;height:24px;background:#ffeaf4;border-radius:14px;box-shadow:inset 0 3px 6px rgba(255,119,183,.22)}
+.layer{position:absolute;left:50%;transform:translateX(-50%);background:#ffd7e6;border-radius:16px;box-shadow:var(--shadow)}
+.layer.bottom{bottom:24px;width:86%;height:95px}
+.layer.middle{bottom:108px;width:74%;height:78px;background:#ffe6ef}
+.layer.top{bottom:170px;width:58%;height:56px;background:#fff}
+.candles{position:absolute;left:50%;bottom:210px;transform:translateX(-50%);display:flex;gap:22px}
+.candle{width:10px;height:44px;background:#fff;border-radius:6px;position:relative;box-shadow:0 2px 0 #ffd0e5 inset}
+.candle:before{content:"";position:absolute;left:50%;top:-10px;width:2px;height:10px;background:#333;transform:translateX(-50%)}
+.flame{position:absolute;left:50%;top:-26px;transform:translateX(-50%);width:12px;height:18px;border-radius:50%;background:radial-gradient(ellipse at center,#fff6a0 0%, #ffb347 60%, #ff7b00 100%);animation:flicker .18s infinite alternate}
+@keyframes flicker{from{transform:translateX(-50%) scale(1) rotate(-2deg)} to{transform:translateX(-50%) scale(1.1) rotate(2deg)}}
+.candles.out .flame{opacity:0;animation:none}
+.nameplate{position:absolute;left:50%;bottom:132px;transform:translateX(-50%);font-family:'Pacifico',cursive;font-size:clamp(24px,4vw,40px);background:linear-gradient(90deg,#ff6aa2,#ff9fd1);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 2px 0 #fff, 0 0 10px rgba(255,119,183,.35)}
+.sprinkles{position:absolute;left:50%;bottom:178px;transform:translateX(-50%);width:58%;height:16px;pointer-events:none}
+.sprinkles span{position:absolute;width:10px;height:3px;border-radius:3px}
+.sprinkles span:nth-child(1){left:6%;top:2px;transform:rotate(12deg);background:#ff6aa2}
+.sprinkles span:nth-child(2){left:14%;top:6px;transform:rotate(-18deg);background:#ffa84d}
+.sprinkles span:nth-child(3){left:22%;top:3px;transform:rotate(22deg);background:#7cc5ff}
+.sprinkles span:nth-child(4){left:30%;top:7px;transform:rotate(-10deg);background:#9cffb3}
+.sprinkles span:nth-child(5){left:38%;top:1px;transform:rotate(18deg);background:#caa0ff}
+.sprinkles span:nth-child(6){left:46%;top:8px;transform:rotate(-25deg);background:#ff6aa2}
+.sprinkles span:nth-child(7){left:54%;top:4px;transform:rotate(12deg);background:#ffa84d}
+.sprinkles span:nth-child(8){left:62%;top:6px;transform:rotate(-16deg);background:#7cc5ff}
+.sprinkles span:nth-child(9){left:70%;top:2px;transform:rotate(20deg);background:#9cffb3}
+.sprinkles span:nth-child(10){left:78%;top:7px;transform:rotate(-12deg);background:#caa0ff}
+.berries{position:absolute;left:50%;bottom:168px;transform:translateX(-50%);width:62%;display:flex;justify-content:space-around}
+.berry{width:18px;height:18px;border-radius:50%;background:radial-gradient(circle at 30% 30%, #fff5 0 30%, #ff5a8a 40%, #ff2968 100%);box-shadow:0 4px 6px rgba(0,0,0,.12)}
+.berry:before{content:"";position:absolute;width:10px;height:6px;background:#5bd16a;border-radius:0 8px 8px 8px;top:-4px;left:4px;transform:rotate(-25deg)}
+.side{position:relative}
+.stack{display:flex;flex-direction:column;gap:12px;max-height:72vh;overflow:auto;padding-right:6px}
+.tile{background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:8px;border:1px solid rgba(255,119,183,.18)}
+.tile img{display:block;width:100%;height:auto;max-width:100%;border-radius:12px;cursor:pointer}
+canvas#confetti{position:fixed;inset:0;z-index:2;pointer-events:none}
+.balloons{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+.balloon{position:absolute;width:62px;height:78px;border-radius:50% 50% 46% 46%/62% 62% 38% 38%;filter:drop-shadow(0 7px 10px rgba(0,0,0,.12));animation: float 14s linear infinite, sway 2.8s ease-in-out infinite;pointer-events:auto;cursor:pointer}
+.balloon:before{content:"";position:absolute;top:16px;left:14px;width:16px;height:16px;border-radius:50%;background:rgba(255,255,255,.55);filter:blur(.5px)}
+.balloon:after{content:"";position:absolute;left:50%;bottom:-24px;transform:translateX(-50%);width:2px;height:34px;background:rgba(0,0,0,.2)}
+.balloon .knot{position:absolute;left:50%;bottom:-10px;transform:translateX(-50%);width:16px;height:10px;background:currentColor;border-radius:2px 2px 6px 6px;box-shadow:0 1px 0 rgba(0,0,0,.2)}
+.balloon .knot:before,.balloon .knot:after{content:"";position:absolute;top:2px;width:8px;height:6px;background:currentColor;border-radius:2px}
+.balloon .knot:before{left:-6px;transform:rotate(-35deg)}
+.balloon .knot:after{right:-6px;transform:rotate(35deg)}
+.balloon.pop{animation:pop .35s forwards}
+@keyframes float{from{transform:translateY(110vh)} to{transform:translateY(-15vh)}}
+@keyframes sway{0%,100%{margin-left:0}50%{margin-left:10px}}
+@keyframes pop{to{transform:scale(1.1);opacity:0}}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:5}
+.lightbox img{max-width:92vw;max-height:92vh;border-radius:16px;box-shadow:var(--shadow)}
+@media (max-width: 900px){.layout{grid-template-columns: 1fr;gap:12px}.side .stack{flex-direction:row;max-height:none;overflow-x:auto;overflow-y:hidden}.tile{min-width:180px}}
+</style>
+</head>
+<body>
+
+<!-- === EDIT HERE: CONFIG ============================================ -->
+<script id="CONFIG">
+  window.CARD_CONFIG = {
+    title: "Happy Birthday 💗🎁",
+    name:  "Name",
+    message: `Your message 🫶`,
+
+    images: {
+      left1:  "assets/photo1.jpg",
+      left2:  "assets/photo3.jpg",
+      right1: "assets/photo4.jpg",
+      right2: "assets/photo2.jpg",
+    },
+
+    gifs: {
+      left:  "8205346511324572804",
+      right: "13882760074367825905"
+    }
+  };
+</script>
+<!-- === /CONFIG ======================================================= -->
+
+<canvas id="confetti"></canvas>
+<div class="balloons" id="balloons"></div>
+
+<main class="wrap">
+  <div class="layout">
+    <aside class="side">
+      <div class="stack" id="leftStack">
+        <div class="tile">
+          <div class="tenor-gif-embed" data-postid="26625146" data-share-method="host" data-aspect-ratio="1.77778" data-width="100%"><a href="https://tenor.com/view/tawog-tawog-gumball-and-darwin-tawog-gumball-and-darwin-excited-gumball-and-darwin-excited-the-amazing-world-of-gumball-darwin-excited-gif-26625146">Tawog GIF</a>from <a href="https://tenor.com">Tenor</a></div>
+        </div>
+        <div class="tile"><img src="assets/photo1.jpg" alt="photo 1"></div>
+        <div class="tile"><img src="assets/photo3.jpg" alt="photo 3"></div>
+      </div>
+    </aside>
+
+    <section class="content">
+      <div class="card" id="card">
+        <div class="card-inner">
+          <div class="face front">
+            <h1 class="title" id="title">Happy Birthday 💗🎁</h1>
+          </div>
+          <div class="face back">
+            <p class="msg pretty" id="message">
+Your message 🫶
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <section class="cake-wrap">
+        <div class="cake">
+          <div class="plate"></div>
+          <div class="layer bottom"></div>
+          <div class="layer middle"></div>
+          <div class="layer top"></div>
+          <div class="sprinkles"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <div class="berries"><div class="berry"></div><div class="berry"></div><div class="berry"></div><div class="berry"></div><div class="berry"></div></div>
+          <div class="candles" id="candles"><div class="candle"><span class="flame"></span></div><div class="candle"><span class="flame"></span></div><div class="candle"><span class="flame"></span></div><div class="candle"><span class="flame"></span></div></div>
+          <div class="nameplate" id="nameplate">Your Name</div>
+        </div>
+        <div style="margin-top:10px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap">
+          <button class="btn" id="boom">Confetti 🎉</button>
+          <button class="btn" id="blow">Blow Candles 🎤</button>
+        </div>
+      </section>
+    </section>
+
+    <aside class="side">
+      <div class="stack" id="rightStack">
+        <div class="tile"><img src="assets/photo4.jpg" alt="photo 4"></div>
+        <div class="tile">
+          <div class="tenor-gif-embed" data-postid="13882760074367825905" data-share-method="host" data-aspect-ratio="1" data-width="100%"><a href="https://tenor.com/view/hamiboom-dance-insanity-gwen-chana-gwenchana-gif-13882760074367825905">Hamiboom Dance</a>from <a href="https://tenor.com">Tenor</a></div>
+        </div>
+        <div class="tile"><img src="assets/photo2.jpg" alt="photo 2"></div>
+        
+      </div>
+    </aside>
+  </div>
+</main>
+
+<div class="lightbox" id="lightbox"><img alt="full"></div>
+
+<script>
+const qs = new URLSearchParams(location.search);
+const get = (k, d) => qs.get(k) ? decodeURIComponent(qs.get(k)) : d;
+
+const card = document.getElementById('card');
+card.addEventListener('click', ()=>{ card.classList.toggle('flipped'); burst(); });
+
+const balloonColors = ['#ff6b9b','#7cc5ff','#ffd166','#9cffb3','#caa0ff'];
+const balloonsEl = document.getElementById('balloons');
+function makeBalloon(){
+  const b = document.createElement('div');
+  b.className = 'balloon';
+  b.style.color = balloonColors[Math.floor(Math.random()*balloonColors.length)];
+  b.style.background = b.style.color;
+  b.style.left = (Math.random()*100)+'vw';
+  b.style.animationDuration = `${12+Math.random()*10}s, ${2+Math.random()*3}s`;
+  b.style.animationDelay = `${Math.random()*-20}s, 0s`;
+  const knot = document.createElement('div'); knot.className='knot'; b.appendChild(knot);
+  b.addEventListener('click', () => { b.classList.add('pop'); burstAt(b.getBoundingClientRect().left+20, b.getBoundingClientRect().top+20); setTimeout(()=>b.remove(),330); });
+  balloonsEl.appendChild(b);
+}
+for(let i=0;i<18;i++) makeBalloon();
+setInterval(()=>{ if(document.querySelectorAll('.balloon').length<22) makeBalloon(); }, 1800);
+
+const canvas = document.getElementById('confetti');
+const ctx = canvas.getContext('2d');
+let W=canvas.width=innerWidth, H=canvas.height=innerHeight;
+addEventListener('resize', ()=>{ W=canvas.width=innerWidth; H=canvas.height=innerHeight; });
+const colors = ['#ff6b9b','#7cc5ff','#ffd166','#9cffb3','#caa0ff','#ff9b6b'];
+const purpleBurst = ['#c4b5fd','#a78bfa','#8b5cf6','#7c3aed'];
+const particles = [];
+function spawn(x=W/2, y=H/2, count=140, palette=colors){
+  for(let i=0;i<count;i++){
+    const a = Math.random()*Math.PI*2;
+    const sp = 2 + Math.random()*5;
+    particles.push({ x,y, vx: Math.cos(a)*sp, vy: Math.sin(a)*sp - 3, g: .08 + Math.random()*.08, size: 4 + Math.random()*6, rot: Math.random()*Math.PI, vr: (Math.random()-.5)*.2, col: palette[i%palette.length], life: 90+Math.random()*40 });
+  }
+}
+function step(){
+  ctx.clearRect(0,0,W,H);
+  for(let i=particles.length-1;i>=0;i--){
+    const p = particles[i]; p.vy += p.g; p.x += p.vx; p.y += p.vy; p.rot += p.vr; p.life--;
+    if(p.y>H+20 || p.life<=0) { particles.splice(i,1); continue; }
+    ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot); ctx.fillStyle = p.col; ctx.fillRect(-p.size/2,-p.size/2,p.size,p.size); ctx.restore();
+  }
+  requestAnimationFrame(step);
+}
+step();
+function burst(){ spawn(W/2,H/2,180); }
+function burstAt(x,y,p=colors){ spawn(x,y,120,p); }
+document.getElementById('boom').addEventListener('click', burst);
+
+const candles = document.getElementById('candles');
+function extinguish(){
+  if(candles.classList.contains('out')) return;
+  candles.classList.add('out');
+  burstAt(innerWidth/2, document.querySelector('.cake').getBoundingClientRect().top + 40, purpleBurst);
+}
+addEventListener('keydown', e=>{ if(e.code==='Space'){ e.preventDefault(); extinguish(); }});
+async function startMic(){
+  try{
+    const stream = await navigator.mediaDevices.getUserMedia({audio:true});
+    const AC = window.AudioContext || window.webkitAudioContext; const ctxA = new AC();
+    const src = ctxA.createMediaStreamSource(stream);
+    const analyser = ctxA.createAnalyser(); analyser.fftSize = 2048; src.connect(analyser);
+    const data = new Uint8Array(analyser.fftSize); let hits=0; let raf;
+    (function tick(){ analyser.getByteTimeDomainData(data);
+      let sum=0; for(let i=0;i<data.length;i++){ const v=(data[i]-128)/128; sum+=v*v; }
+      const rms=Math.sqrt(sum/data.length);
+      if(rms>0.08){ hits++; if(hits>6){ extinguish(); cancelAnimationFrame(raf); stream.getTracks().forEach(t=>t.stop()); ctxA.close(); return; } }
+      else hits=0; raf = requestAnimationFrame(tick);
+    })();
+  } catch(err){ extinguish(); }
+}
+document.getElementById('blow').addEventListener('click', startMic);
+
+/* CONFIG apply (URL > CONFIG > defaults) */
+const CFG = window.CARD_CONFIG || {};
+document.getElementById('nameplate').textContent = get('name',  CFG.name  ?? 'Your Name');
+document.getElementById('title').textContent     = get('title', CFG.title ?? 'Happy Birthday 💗🎁');
+const msgEl = document.getElementById('message');
+msgEl.textContent = get('msg', CFG.message ?? msgEl.textContent);
+
+/* images */
+const imgMap = {
+  left1 : document.querySelector('#leftStack  img[alt="photo 1"]'),
+  left2 : document.querySelector('#leftStack  img[alt="photo 3"]'),
+  right1: document.querySelector('#rightStack img[alt="photo 4"]'),
+  right2: document.querySelector('#rightStack img[alt="photo 2"]'),
+  idol  : document.querySelector('#rightStack img[alt="idol"]')
+};
+if (CFG.images){
+  Object.entries(CFG.images).forEach(([k,src])=>{
+    if (imgMap[k] && src) imgMap[k].src = src;
+  });
+}
+
+/* GIF ids */
+const gifLeft  = document.querySelector('#leftStack  .tenor-gif-embed');
+const gifRight = document.querySelector('#rightStack .tenor-gif-embed');
+if (CFG.gifs?.left  && gifLeft)  gifLeft.dataset.postid  = CFG.gifs.left;
+if (CFG.gifs?.right && gifRight) gifRight.dataset.postid = CFG.gifs.right;
+/* reload tenor */
+(function(){
+  const s = document.createElement('script');
+  s.async = true; s.src = 'https://tenor.com/embed.js';
+  document.body.appendChild(s);
+})();
+
+/* extras */
+setTimeout(burst, 400);
+const t = get('t','');
+if(t==='dark'){
+  document.documentElement.style.setProperty('--bg','#0f1115');
+  document.documentElement.style.setProperty('--ink','#f3f5f7');
+  document.documentElement.style.setProperty('--card','#1a1d24');
+}
+</script>
+<script async src="https://tenor.com/embed.js"></script>
+</body>
+</html>
