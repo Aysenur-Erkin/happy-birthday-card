@@ -1,6 +1,6 @@
 # Happy Birthday Card 🎉
 
-A single-page, mobile-friendly birthday card template: HTML/CSS/JS (no build tools).  
+A single-page, mobile-friendly birthday card template (no build tools).  
 Flip card message, confetti, “blow the candles” cake, side galleries, and Tenor GIF embeds.
 
 <img src="img.png" alt="panel" width="600">
