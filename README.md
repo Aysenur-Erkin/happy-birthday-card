@@ -1,34 +1,11 @@
-# Happy Birthday Card 🎉
+# Happy birthday card
 
-A single-page, mobile-friendly birthday card template (no build tools).  
-Flip card message, confetti, “blow the candles” cake, side galleries, and Tenor GIF embeds.
+One HTML file. Open `index.html` in a browser, or put the folder on GitHub Pages.
 
-<img src="img.png" alt="panel" width="600">
-<img src="img2.png" alt="panel" width="600">
+The card flips, confetti fires, candles go out if the mic picks up a blow, balloons pop, photos open in a lightbox. Dark theme is `?t=dark`. Name and message can come from the URL: `?name=Ada&msg=hi`.
 
+Edit the `CARD_CONFIG` block near the top of `index.html`. `name` there is `"Name"`. Photos are `assets/photo1.jpg` to `photo4.jpg`. The files in the repo are placeholders. Replace them with real pictures, same names.
 
-## Demo Setup
-Open `index.html` locally or host it (e.g., GitHub Pages). Works on desktop & mobile.
+<img src="img.png" alt="card" width="600">
 
----
-
-## Quick Start
-1. **Open** `index.html` and edit the **CONFIG** block near the top:
-   ```html
-   <script id="CONFIG">
-     window.CARD_CONFIG = {
-       title: "Happy Birthday 💗🎁",
-       name:  "Your Name",
-       message: `Your message here`,
-       images: {
-         left1:  "assets/photo1.jpg",
-         left2:  "assets/photo3.jpg",
-         right1: "assets/photo4.jpg",
-         right2: "assets/photo2.jpg",
-       },
-       gifs: {
-         left:  "8205346511324572804",
-         right: "13882760074367825905"
-       }
-     };
-   </script>
+MIT. See LICENSE.
