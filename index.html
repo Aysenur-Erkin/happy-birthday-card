@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#fff7fc;--ink:#2b2830;--accent:#ff77b7;--accent2:#8fd3ff;--purple:#a78bfa;--card:#ffffff;--shadow:0 10px 30px rgba(255,119,183,.20)}
+:root{--bg:#fff7fc;--ink:#2b2830;--accent:#ff77b7;--accent2:#8fd3ff;--card:#ffffff;--shadow:0 10px 30px rgba(255,119,183,.20)}
 *{box-sizing:border-box}html,body{height:100%;margin:0}
 body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden}
 body::before{content:"";position:fixed;inset:0;pointer-events:none;background:
@@ -81,7 +81,7 @@ canvas#confetti{position:fixed;inset:0;z-index:2;pointer-events:none}
 </head>
 <body>
 
-<!-- === EDIT HERE: CONFIG ============================================ -->
+<!-- card text -->
 <script id="CONFIG">
   window.CARD_CONFIG = {
     title: "Happy Birthday 💗🎁",
@@ -101,7 +101,7 @@ canvas#confetti{position:fixed;inset:0;z-index:2;pointer-events:none}
     }
   };
 </script>
-<!-- === /CONFIG ======================================================= -->
+
 
 <canvas id="confetti"></canvas>
 <div class="balloons" id="balloons"></div>
@@ -167,7 +167,7 @@ Your message 🫶
 
 <script>
 const qs = new URLSearchParams(location.search);
-const get = (k, d) => qs.get(k) ? decodeURIComponent(qs.get(k)) : d;
+const get = (k, d) => qs.get(k) || d;
 
 const card = document.getElementById('card');
 card.addEventListener('click', ()=>{ card.classList.toggle('flipped'); burst(); });
@@ -241,7 +241,7 @@ async function startMic(){
 }
 document.getElementById('blow').addEventListener('click', startMic);
 
-/* CONFIG apply (URL > CONFIG > defaults) */
+/* text */
 const CFG = window.CARD_CONFIG || {};
 document.getElementById('nameplate').textContent = get('name',  CFG.name  ?? 'Your Name');
 document.getElementById('title').textContent     = get('title', CFG.title ?? 'Happy Birthday 💗🎁');
@@ -253,8 +253,7 @@ const imgMap = {
   left1 : document.querySelector('#leftStack  img[alt="photo 1"]'),
   left2 : document.querySelector('#leftStack  img[alt="photo 3"]'),
   right1: document.querySelector('#rightStack img[alt="photo 4"]'),
-  right2: document.querySelector('#rightStack img[alt="photo 2"]'),
-  idol  : document.querySelector('#rightStack img[alt="idol"]')
+  right2: document.querySelector('#rightStack img[alt="photo 2"]')
 };
 if (CFG.images){
   Object.entries(CFG.images).forEach(([k,src])=>{
@@ -267,13 +266,6 @@ const gifLeft  = document.querySelector('#leftStack  .tenor-gif-embed');
 const gifRight = document.querySelector('#rightStack .tenor-gif-embed');
 if (CFG.gifs?.left  && gifLeft)  gifLeft.dataset.postid  = CFG.gifs.left;
 if (CFG.gifs?.right && gifRight) gifRight.dataset.postid = CFG.gifs.right;
-/* reload tenor */
-(function(){
-  const s = document.createElement('script');
-  s.async = true; s.src = 'https://tenor.com/embed.js';
-  document.body.appendChild(s);
-})();
-
 /* extras */
 setTimeout(burst, 400);
 const t = get('t','');
